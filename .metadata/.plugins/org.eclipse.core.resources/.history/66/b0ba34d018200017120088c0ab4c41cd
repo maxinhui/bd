@@ -1,0 +1,76 @@
+package top.builbu.website.websocket.controller;
+
+import com.alibaba.fastjson.JSONObject;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.socket.*;
+import top.builbu.business.client.entity.MsgDeliverServiceRoom;
+import top.builbu.business.user.entity.SessionUser;
+import top.builbu.core.entity.Code;
+import java.util.HashMap;
+import lombok.extern.slf4j.Slf4j;
+
+
+/**
+ * 
+ */
+@Slf4j
+@Configuration
+public class WebSocketHander implements WebSocketHandler {
+   
+    private SessionManager sessionManager = SessionManager.instance();
+    
+
+    //初次链接成功执行
+    @Override
+    public void afterConnectionEstablished(WebSocketSession session) throws Exception {
+        
+        Object temp = session.getAttributes().get(SessionManager.USER_SESSION);
+        if(temp!= null){
+            SessionUser user = (SessionUser)temp; //用户信息
+           
+                     sessionManager.put(user.getUserId(), session);
+                     sessionManager.chatroomMapPut(Long.valueOf("10086"), user.getUserId(), session);
+                    log.info("链接成功......用户Id"+user.getUserId());
+                   
+
+        }
+    }
+
+    //接受消息处理消息
+    @Override
+    public void handleMessage(WebSocketSession webSocketSession, WebSocketMessage<?> webSocketMessage) throws Exception {
+    	
+    	 SessionUser user =(SessionUser) webSocketSession.getAttributes().get(SessionManager.USER_SESSION);
+    	 log.debug("接受消息"+webSocketMessage.getPayload());
+//    	 MsgDeliverServiceRoom mdsr = new MsgDeliverServiceRoom();
+//    	 mdsr.setTargetId(Long.valueOf("10086"));
+//    	 mdsr.setMsgBody(webSocketMessage.getPayload()+ "");
+//    	 mdsr.setMsgType(Code.MSG_TYPE_2);
+    	
+        sessionManager.sendMessage(user, webSocketMessage.getPayload().toString(),Code.MSG_ORIGIN_CLIENT);
+    }
+
+    @Override
+    public void handleTransportError(WebSocketSession webSocketSession, Throwable throwable) throws Exception {
+        if(webSocketSession.isOpen()){
+            webSocketSession.close();
+        }
+//        Object temp = webSocketSession.getAttributes().get(SessionManager.USER_SESSION);
+//        SessionUser user = (SessionUser)temp; //用户信息
+//        userMap.remove(user.getUserId());
+        
+        log.debug("链接出错，关闭链接......");
+    }
+
+    @Override
+    public void afterConnectionClosed(WebSocketSession webSocketSession, CloseStatus closeStatus) throws Exception {
+        log.debug("链接关闭......" + closeStatus.toString());
+    }
+
+    @Override
+    public boolean supportsPartialMessages() {
+        return false;
+    }
+    
+
+}

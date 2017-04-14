@@ -1,0 +1,10 @@
+package crm.config;
+
+
+
+/**
+ * 
+ */
+public class MsgDeliverClientRoom  extends MsgDeliverClient {
+
+}

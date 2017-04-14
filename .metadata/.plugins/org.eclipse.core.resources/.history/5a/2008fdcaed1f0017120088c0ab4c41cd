@@ -1,0 +1,31 @@
+package crm.webSocket.entity;
+
+import java.util.ArrayList;
+import crm.config.MsgUserInfo;
+
+public class SessionUser extends User {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -7491361632313589581L;
+	/** 在运行期间 该用户所加入的聊天室id*/
+    private ArrayList<Long> chatroomIds = new ArrayList<>();
+    /** 消息传递中的用户信息*/
+    private MsgUserInfo msgUserInfo;
+
+    public ArrayList<Long> getChatroomIds() {
+        return chatroomIds;
+    }
+
+    public void setChatroomIds(ArrayList<Long> chatroomIds) {
+        this.chatroomIds = chatroomIds;
+    }
+
+    public MsgUserInfo getMsgUserInfo() {
+        return msgUserInfo;
+    }
+
+    public void setMsgUserInfo(MsgUserInfo msgUserInfo) {
+        this.msgUserInfo = msgUserInfo;
+    }
+}

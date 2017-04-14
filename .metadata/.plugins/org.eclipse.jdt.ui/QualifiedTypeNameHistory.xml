@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="top.builbu.business.user.entity.MsgUserInfo"/>
+<fullyQualifiedTypeName name="top.builbu.business.client.entity.MsgDeliverClient"/>
+<fullyQualifiedTypeName name="top.builbu.business.client.entity.MsgDeliverService"/>
+<fullyQualifiedTypeName name="com.alibaba.fastjson.JSONObject"/>
+<fullyQualifiedTypeName name="top.builbu.business.client.entity.MsgDeliverClientPToP"/>
+<fullyQualifiedTypeName name="top.builbu.business.client.entity.MsgDeliverClientRoom"/>
+<fullyQualifiedTypeName name="top.builbu.business.client.entity.MsgDeliverServicePToP"/>
+<fullyQualifiedTypeName name="top.builbu.business.client.entity.MsgDeliverServiceRoom"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+<fullyQualifiedTypeName name="top.builbu.core.entity.Code"/>
+<fullyQualifiedTypeName name="top.builbu.business.user.entity.User"/>
+<fullyQualifiedTypeName name="top.builbu.business.user.entity.SessionUser"/>
+<fullyQualifiedTypeName name="java.lang.Deprecated"/>
+<fullyQualifiedTypeName name="lombok.extern.slf4j.Slf4j"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ResponseBody"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
+<fullyQualifiedTypeName name="java.io.Writer"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+</qualifiedTypeNameHistroy>

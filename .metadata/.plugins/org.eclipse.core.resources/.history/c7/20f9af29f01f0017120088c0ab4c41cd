@@ -1,0 +1,7 @@
+package crm.config;
+
+/**
+ * 
+ */
+public class MsgDeliverServicePToP extends MsgDeliverService {
+}

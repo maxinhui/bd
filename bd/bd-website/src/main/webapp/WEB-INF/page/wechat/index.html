@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,height=device-height,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no" />
+	<title>利乐</title>
+	<link rel="stylesheet" href="${request.contextPath}/ui/css/reset.css">
+	<link rel="stylesheet" href="${request.contextPath}/ui/css/style.css">
+	<link rel="stylesheet" href="${request.contextPath}/ui/css/animate.css">
+	<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script src="${request.contextPath}/ui/js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="${request.contextPath}/ui/js/lile.js"></script>
+
+</head>
+<body>
+	<section id="index-main">
+		<header>
+			<div class="logo"><img src="${request.contextPath}/ui/img/logo.png" alt=""></div>
+		</header>
+		<h1><img src="${request.contextPath}/ui/img/index-h1-pic.png" alt=""></h1>
+		<div class="content">
+			<p class="get-btn"><a href="${request.contextPath}/weChat/check"><img src="${request.contextPath}/ui/img/get-btn.png" alt=""></a></p>
+			<a class="activity-rule" href="javascript:;"><img src="${request.contextPath}/ui/img/rule-icon.png" alt=""></a>
+			<div class="bg-pic"><img src="${request.contextPath}/ui/img/index-con-bg.png" alt=""></div>	
+		</div>
+	</section>
+	<!-- 活动规则 -->
+	<section id="rule">
+		<header>
+			<div class="logo"><img src="${request.contextPath}/ui/img/logo.png" alt=""></div>
+		</header>
+		<h1><img src="${request.contextPath}/ui/img/index-h1-pic.png" alt=""></h1>
+		<div class="content">
+			<a class="activity-rule back" href="javascript:;"><img src="${request.contextPath}/ui/img/rule-back-icon.png" alt=""></a>
+			<div class="bg-pic"><img src="${request.contextPath}/ui/img/rule-con-bg.png" alt=""></div>	
+		</div>
+	</section>
+	<script>
+		// 弹窗弹出
+		$('#index-main .activity-rule').click(function(){
+			$('#rule').css('display','block');
+		});
+		// 弹窗隐藏
+		$('#rule .back').click(function(){
+			$('#rule').css('display','none');
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!-- START HEAD -->
+<head>
+<meta charset="UTF-8" />
+
+<!-- this line will appear only if the website is visited with an iPad -->
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.2, user-scalable=yes" />
+
+<title></title>
+
+
+
+
+<script type='text/javascript' src='${request.contextPath}/ui/js/jquery.js'></script>
+<script type="text/javascript">
+var WsUrl = "localhost/bd-website";
+  $(function(){
+    	
+    	
+        linkWebSocket();
+
+     })
+
+function  linkWebSocket(){
+	var websocket;
+    if ('WebSocket' in window) {
+       // alert("WebSocket");
+        websocket = new WebSocket("ws://"+WsUrl+"/echo");
+    } else if ('MozWebSocket' in window) {
+        alert("MozWebSocket");
+        websocket = new MozWebSocket("ws://echo");
+    } else {
+        alert("SockJS");
+        websocket = new SockJS("http://"+WsUrl+"/sockjs/echo");
+    }
+    websocket.onopen = function (evnt) {
+        alert("链接服务器成功!")
+    };
+    websocket.onmessage = function (evnt) {
+        alert( evnt.data);
+  
+    };
+    websocket.onerror = function (evnt) {
+	   alert("出现异常")
+    };
+    websocket.onclose = function (evnt) {
+        alert("与服务器断开了链接!")
+    }
+
+    function send(sendType,u){
+        if (websocket != null) {
+        	var _this = $(this);
+        	var message = document.getElementById('message').value;
+        	var json;
+        	switch(sendType){
+        	   case 1 ：//群发
+        	        json = "{msgBody:'"+message+"',targetId:'112',msgType:'1'}";
+        	        break;
+        	   case 2 ://单发
+        	        json = "{msgBody:'"+message+"',targetId:'112',msgType:'2'}";
+        	}
+             
+            
+             
+            alert(json)
+            websocket.send(json);
+        } else {
+            alert('未与服务器链接.');
+        }
+    }
+}
+
+</script>
+</head>
+<body>
+<div><input type="text" id="room"/><button id="send" onclick="send(1,room)">群发</button></div>
+<div><input type="text" id="user"/><button id="send" onclick="send(2,user)">点对点发</button></div>
+</body>
+</html>

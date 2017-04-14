@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;bd/bd-commmon&apos; to &apos;bd-common&apos;" description="Rename resource &apos;bd-commmon&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="bd-commmon" name="bd-common" stamp="1491989014024" updateReferences="true"/>
+</session>

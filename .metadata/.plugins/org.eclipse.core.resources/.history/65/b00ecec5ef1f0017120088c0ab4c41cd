@@ -1,0 +1,8 @@
+package top.builbu.core.entity;
+
+public class Code {
+	
+    public static final String USER_SESSION = "user_session"; 
+    
+    public static final String USER_ID = "user_id";
+}

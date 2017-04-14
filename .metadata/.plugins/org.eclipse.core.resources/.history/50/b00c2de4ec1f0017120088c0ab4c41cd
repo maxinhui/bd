@@ -1,0 +1,5 @@
+package top.builbu.core.entity;
+
+public class Code {
+
+}

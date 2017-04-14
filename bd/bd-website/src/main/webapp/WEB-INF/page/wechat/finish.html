@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,height=device-height,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no" />
+	<title>利乐</title>
+	<link rel="stylesheet" href="${request.contextPath}/ui/css/reset.css">
+	<link rel="stylesheet" href="${request.contextPath}/ui/css/finish.css">
+	<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script src="${request.contextPath}/ui/js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="${request.contextPath}/ui/js/lile.js"></script>
+
+	<style>
+		@-webkit-keyframes animations{
+			0%{transform: scale(1);}
+			25%{transform: scale(1.1);}
+			45%{transform: scale(1);}
+			50%{transform: scale(1);}
+			75%{transform: scale(1.15);}
+			100%{transform: scale(1);}
+		}
+		@-moz-keyframes animations{
+			0%{transform: scale(1);}
+			25%{transform: scale(1.1);}
+			45%{transform: scale(1);}
+			50%{transform: scale(1);}
+			75%{transform: scale(1.15);}
+			100%{transform: scale(1);}
+		}
+		@keyframes animations{
+			0%{transform: scale(1);}
+			25%{transform: scale(1.1);}
+			45%{transform: scale(1);}
+			50%{transform: scale(1);}
+			75%{transform: scale(1.15);}
+			100%{transform: scale(1);}
+		}
+		.act-info img {
+			-webkit-animation: animations 1.5s .5s infinite;
+			-moz-animation: animations 1.5s .5s infinite;
+			animation: animations 1.5s .5s infinite;
+		}
+	</style>
+</head>
+<body>
+	<section id="finish">
+		<header>
+			<div class="logo"><img src="${request.contextPath}/ui/img/logo.png" alt=""></div>
+		</header>
+		<h1><img src="${request.contextPath}/ui/img/finish-h1-pic.png" alt=""></h1>
+		<div class="lile-tree">
+			<img src="${request.contextPath}/ui/img/lile-pic.png" alt="">
+		</div>
+		<div class="act-info"><img src="${request.contextPath}/ui/img/act-info.png" alt=""></div>
+		<div class="qrcode">
+			<img src="${request.contextPath}/ui/img/qrcode.png" alt="">
+		</div>
+	</section>
+</body>
+</html>

@@ -1,0 +1,58 @@
+package top.builbu.website.websocket.controller;
+
+
+import lombok.extern.slf4j.Slf4j;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Slf4j
+@Controller
+@RequestMapping("/ws")
+public class WebSocketController {
+	
+//	@Resource
+//	private AdminService<Admin,Integer> adminService;
+//	@Resource
+//	private AdminFiledService<AdminFiled,Integer> adminFiledService;
+//	@RequestMapping(value = "/", method = RequestMethod.POST)
+//	public ModelAndView  login(HttpSession session,Admin admin){
+//		
+//		try {
+//			admin=adminService.login(admin) ;
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+//		if(admin==null){
+//			return new ModelAndView ("login");
+//		}else{
+//			
+//				try {
+//					session.setAttribute("exFiled", adminFiledService.findExFiled(admin.getAdminId()));
+//				} catch (Exception e) {
+//
+//					logger.error("测试报错");
+//					e.printStackTrace();
+//				}
+//			session.setAttribute("admin",admin);
+//		    return new ModelAndView ("index");
+//		}
+//	}
+	
+	
+	@RequestMapping("gg")
+	public String gg(){
+		log.info("for:index---------------898");
+		return "/test/ss";
+	}
+	
+	
+	@RequestMapping("r")
+	public String re(){
+		log.info("for:index--------55555-------898");
+		return "/test/ss";
+	}
+	
+}

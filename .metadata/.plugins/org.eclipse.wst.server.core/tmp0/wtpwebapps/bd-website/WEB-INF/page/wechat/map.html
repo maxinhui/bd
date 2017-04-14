@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,height=device-height,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no" />
+	<title>利乐</title>
+	<link rel="stylesheet" href="${request.contextPath}/ui/css/reset.css">
+	<link rel="stylesheet" href="${request.contextPath}/ui/css/map.css">
+	<link rel="stylesheet" href="${request.contextPath}/ui/css/animate.css">	
+	<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script src="${request.contextPath}/ui/js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="${request.contextPath}/ui/js/lile.js"></script>
+	<script src="${request.contextPath}/ui/layer/layer.js"></script>
+	
+</head>
+<body>
+	<section id="map-main">
+		<header>
+			<div class="logo"><img src="${request.contextPath}/ui/img/logo.png" alt=""></div>
+		</header>
+		<h1><img src="${request.contextPath}/ui/img/map-h1-pic.png" alt=""></h1>
+		<ul class="col-fu">
+			<li>
+				<div class="bg-icon"></div>
+				<img src="${request.contextPath}/ui/img/lifu.png" alt="">
+			</li>
+			<li>
+				<div class="bg-icon"></div>
+				<img src="${request.contextPath}/ui/img/lefu.png" alt="">
+			</li>
+		</ul>
+		<h2 class="show-fu"><img src="${request.contextPath}/ui/img/map-h2-pic.png" alt=""></h2>
+		<div class="how-go">
+			<h3><img src="${request.contextPath}/ui/img/how-go.png" alt=""></h3>
+			<div class="go-btn">
+				<a href="javascript:;"><img src="${request.contextPath}/ui/img/go-btn.png" alt=""></a>
+				<span></span>
+			</div>
+		</div>
+		<div class="map">
+					<!-- 切换地图图片 -->
+			<div class="map-pic mapA">
+				<p><img src="${request.contextPath}/ui/img/zhanwei.png" alt=""></p>
+				<img class="map-img" src="${request.contextPath}/ui/img/mapA.gif" alt="">
+			</div>
+			<div class="map-pic mapB">
+				<p><img src="${request.contextPath}/ui/img/zhanwei.png" alt=""></p>
+				<img class="map-img" src="${request.contextPath}/ui/img/mapB.gif" alt="">
+			</div>
+			<div class="map-pic mapC">
+				<p><img src="${request.contextPath}/ui/img/zhanwei.png" alt=""></p>
+				<img class="map-img" src="${request.contextPath}/ui/img/mapC.gif" alt="">
+			</div>
+			<div class="map-pic mapD">
+				<p><img src="${request.contextPath}/ui/img/zhanwei.png" alt=""></p>
+				<img class="map-img" src="${request.contextPath}/ui/img/mapD.gif" alt="">
+			</div>
+			<div class="map-pic mapE">
+				<p><img src="${request.contextPath}/ui/img/zhanwei.png" alt=""></p>
+				<img class="map-img" src="${request.contextPath}/ui/img/mapE.gif" alt="">
+			</div>
+			<div class="map-pic mapF">
+				<p><img src="${request.contextPath}/ui/img/zhanwei.png" alt=""></p>
+				<img class="map-img" src="${request.contextPath}/ui/img/mapF.gif" alt="">
+			</div>
+			<div class="map-pic mapG">
+				<p><img src="${request.contextPath}/ui/img/zhanwei.png" alt=""></p>
+				<img class="map-img" src="${request.contextPath}/ui/img/mapG.gif" alt="">
+			</div>
+			<div class="map-pic mapH">
+				<p><img src="${request.contextPath}/ui/img/zhanwei.png" alt=""></p>
+				<img class="map-img" src="${request.contextPath}/ui/img/mapA.gif" alt="">
+			</div>
+		</div>
+		<div class="sub-btn">
+			<input type="text" id="changeCode" placeholder="请输入兑换码">
+			<a class="button" href="javascript:;" onclick="sub()">提交</a>
+		</div>
+	</section>
+	<script>
+		$('#map-main .map').find('.${module.address}').css('display','block');
+		$('.go-btn').click(function(){
+			$('.map').css('display','block');
+		});
+		$('.map').click(function(){
+			$(this).css('display','none');
+		});
+		
+		 function sub(){
+		    	var code = $("#changeCode").val();
+		   
+		    	if(code == null && code == ""){		    		
+		    		layer.msg("请输入正确的验证码！", {icon: 4});
+		    	}else{
+				   	 $.post("${request.contextPath}/weChat/exchange", { changeCode: code ,code:'${module.code}'},
+				   		   function(data){
+				   		    // alert(JSON.stringify(data)); // John
+						 if(data.success){
+							 window.location.href="${request.contextPath}/sys/forLoad?html=/wechat/finish";
+						 }else{
+							 layer.msg(data.message, {icon: 4});
+						 }
+				   		   }, "json");
+		    	}
+		    }
+	</script>
+</body>
+</html>
