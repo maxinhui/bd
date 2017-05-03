@@ -1,0 +1,232 @@
+package top.builbu.website.websocket.controller;
+
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+
+
+
+
+
+
+
+
+
+
+
+import org.springframework.web.socket.TextMessage;
+import org.springframework.web.socket.WebSocketSession;
+
+import top.builbu.business.client.entity.MsgDeliverClient;
+import top.builbu.business.client.entity.MsgDeliverClientPToP;
+import top.builbu.business.client.entity.MsgDeliverClientRoom;
+import top.builbu.business.client.entity.MsgDeliverService;
+import top.builbu.business.client.entity.MsgDeliverServicePToP;
+import top.builbu.business.client.entity.MsgDeliverServiceRoom;
+import top.builbu.business.user.entity.SessionUser;
+import top.builbu.core.entity.Code;
+
+import java.io.IOException;
+import java.util.*;
+
+import lombok.extern.slf4j.Slf4j;
+
+
+/**
+ * 
+ * Session管理中心
+ */
+@Slf4j
+public class SessionManager {
+    /**
+     * session中的用户信息属性
+     */
+    public static final String USER_SESSION = "user_session";
+   
+    private SessionManager() {
+    };
+
+    public static SessionManager instance() {
+        return SingletonHolder.sessionManager;
+    }
+
+    private static class SingletonHolder {
+        private static SessionManager sessionManager = new SessionManager();
+    }
+
+    //有id 的用户 k = 用户id
+    private HashMap<Long, WebSocketSession> userMap = new HashMap<>();
+    // 聊天室 k= 聊天室id，v = <用户id，对应的session>
+    private HashMap<Long,HashMap<Long,WebSocketSession>> chatroomMap =  new HashMap<>();
+
+    /**
+     * 增加一个用户session
+     *
+     * @param userId 用户id
+     * @param webSocketSession
+     * @param userType 用户类型
+     */
+    public void put(Long userId, WebSocketSession webSocketSession) {   	      
+                userMap.put(userId, webSocketSession);
+                log.debug("增加用户："+userId);
+    }
+
+    /**
+     * 移除对应的socket
+     * @param webSocketSession
+     */
+    public void remove(WebSocketSession webSocketSession){
+        Map<String, Object> attributes = webSocketSession.getAttributes();
+        SessionUser user = (SessionUser) attributes.get(SessionManager.USER_SESSION);
+        Long userId = user.getUserId();       
+        log.debug("要移除的id"+userId);
+        //判断是否加入了对应的聊天室
+        ArrayList<Long> chatroomIds = user.getChatroomIds();
+        Iterator<Long> iterator = chatroomIds.iterator();
+        while (iterator.hasNext()){
+            Long id = iterator.next();
+            if(chatroomMap.containsKey(id)){
+                chatroomMap.get(id).remove(userId);
+                iterator.remove();
+            }
+        }
+        log.debug("socket已移除");
+    }
+
+    /**
+     * 往对应的聊天室增加一个人
+     * @param chatroomId 聊天室id
+     * @param userId 用户id
+     * @param webSocketSession
+     */
+    public  void chatroomMapPut(Long chatroomId,Long userId,WebSocketSession webSocketSession){
+        HashMap<Long, WebSocketSession> longWebSocketSessionHashMap = chatroomMap.get(chatroomId);
+        if(longWebSocketSessionHashMap == null){
+            longWebSocketSessionHashMap = new HashMap<>();
+        }
+        longWebSocketSessionHashMap.put(userId,webSocketSession);
+        chatroomMap.put(chatroomId,longWebSocketSessionHashMap);
+    }
+
+    /**
+     * 发送消息
+     * @param user  消息发送者
+     * @param msgJson 消息json
+     * @param msgOrigin 消息源
+     */
+    public void sendMessage(SessionUser user, String msgJson,int msgOrigin) {
+        MsgDeliverClient mdc = null;
+        MsgDeliverService mds = null;
+        JSONObject jsonObject = JSON.parseObject(msgJson);
+        Integer msgType = jsonObject.getInteger("msgType");
+        if(Code.MSG_ORIGIN_CLIENT == msgOrigin){ //来自客户端
+        	log.debug("客户端消息："+msgJson);
+            if(Code.MSG_TYPE_1 == msgType.intValue()){
+                mdc = (MsgDeliverClient) JSONObject.parseObject(msgJson, MsgDeliverClientPToP.class);
+            }else{
+                mdc = (MsgDeliverClient) JSONObject.parseObject(msgJson, MsgDeliverClientRoom.class);
+            }
+        }else if(Code.MSG_ORIGIN_SERVICE == msgOrigin){//来自服务端
+        	log.debug("服务端消息："+msgJson);
+            if(Code.MSG_TYPE_1 == msgType.intValue()){
+                mds = (MsgDeliverService) JSONObject.parseObject(msgJson, MsgDeliverServicePToP.class);
+            }else{
+                mds = (MsgDeliverService) JSONObject.parseObject(msgJson, MsgDeliverServiceRoom.class);
+            }
+        }
+      
+        switch (msgType) {
+            case Code.MSG_TYPE_1://点对点交互信息，方法独立
+            	if(Code.MSG_ORIGIN_CLIENT == msgOrigin){//来自客服端
+            		MsgDeliverClientPToP mdcp = (MsgDeliverClientPToP) mdc;
+            		if(userMap.containsKey(mdcp.getTargetId())){
+            			WebSocketSession session = this.userMap.get(mdcp.getTargetId());
+            			try{
+            				session.sendMessage(new TextMessage(JSONObject.toJSONString(mdcp)));
+            			}catch(IOException e){
+            				e.printStackTrace();
+            			}
+            		}
+            	}else if(Code.MSG_ORIGIN_SERVICE == msgOrigin){//来自服务端
+            		MsgDeliverServicePToP mdsp = (MsgDeliverServicePToP) mds;
+            		if(userMap.containsKey(mdsp.getTargetId())){
+            			WebSocketSession session = this.userMap.get(mdsp.getTargetId());
+            			try{
+            				session.sendMessage(new TextMessage(JSONObject.toJSONString(mdsp)));
+            			}catch(IOException e){
+            				e.printStackTrace();
+            			}
+            		}
+            	}	          
+                break;
+            case Code.MSG_TYPE_2:  //聊天室消息
+                if(Code.MSG_ORIGIN_CLIENT == msgOrigin){ //来自客户端
+                    MsgDeliverClientRoom mdcr = (MsgDeliverClientRoom)mdc;
+                    if(chatroomMap.containsKey(mdcr.getTargetId())){
+                        HashMap<Long, WebSocketSession> room = chatroomMap.get(mdcr.getTargetId());
+                        for (Map.Entry<Long,WebSocketSession>  entry : room.entrySet()){
+                            WebSocketSession session = entry.getValue();
+                            Long key = entry.getKey();
+                            log.info(key.toString());
+                            try {
+                            	if(user.getUserId() != key){
+                                  session.sendMessage(new TextMessage(JSONObject.toJSONString(mdcr)));
+                            	}
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                }else if(Code.MSG_ORIGIN_SERVICE == msgOrigin){
+                    MsgDeliverServiceRoom mdsr = (MsgDeliverServiceRoom)mds;
+                    if(chatroomMap.containsKey(mdsr.getTargetId())){
+                        HashMap<Long, WebSocketSession> room = chatroomMap.get(mdsr.getTargetId());
+                        for (Map.Entry<Long,WebSocketSession>  entry : room.entrySet()){
+                            WebSocketSession session = entry.getValue();
+                            try {
+                            	session.sendMessage(new TextMessage(JSONObject.toJSONString(mdsr)));                             
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                }
+                break;
+            case Code.MSG_TYPE_4:  //给某个聊天室推送消息
+                MsgDeliverServiceRoom mdsr = (MsgDeliverServiceRoom)mds;
+                HashMap<Long, WebSocketSession> map = chatroomMap.get(mdsr.getTargetId());
+                if(map == null){
+                    return;
+                }
+                for (Map.Entry<Long,WebSocketSession>  entry : map.entrySet()){
+                    WebSocketSession session = entry.getValue();
+                    try {
+                        session.sendMessage(new TextMessage(JSONObject.toJSONString(mdsr)));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                break;
+            case Code.MSG_TYPE_5:  //特殊事件推送
+                MsgDeliverClientRoom mdcr = (MsgDeliverClientRoom)mdc;
+                HashMap<Long, WebSocketSession> map5 = chatroomMap.get(mdcr.getTargetId());
+                if(map5 == null){
+                    return;
+                }
+                for (Map.Entry<Long,WebSocketSession>  entry : map5.entrySet()){
+                    WebSocketSession session = entry.getValue();
+                    try {
+                        session.sendMessage(new TextMessage(JSONObject.toJSONString(mdcr)));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
+
+
+}

@@ -78,18 +78,22 @@ public class SessionManager {
     public void remove(WebSocketSession webSocketSession){
         Map<String, Object> attributes = webSocketSession.getAttributes();
         SessionUser user = (SessionUser) attributes.get(SessionManager.USER_SESSION);
-        Long userId = user.getUserId();                           
+        Long userId = user.getUserId();    
         //判断是否加入了对应的聊天室
-        ArrayList<Long> chatroomIds = user.getChatroomIds();
-        Iterator<Long> iterator = chatroomIds.iterator();
-        while (iterator.hasNext()){
-            Long id = iterator.next();
-            if(chatroomMap.containsKey(id)){
-                chatroomMap.get(id).remove(userId);
-                iterator.remove();
-            }
-        }
-        log.debug("socket已移除");
+//        ArrayList<Long> chatroomIds = user.getChatroomIds();
+//
+//        Iterator<Long> iterator = chatroomIds.iterator();
+//        while (iterator.hasNext()){
+//            Long id = iterator.next();
+//            log.info("rId"+id);
+//            if(chatroomMap.containsKey(id)){
+//                chatroomMap.get(id).remove(userId);
+//                iterator.remove();
+//            }
+//        }
+        HashMap<Long, WebSocketSession> longWebSocketSessionHashMap = chatroomMap.get(Long.valueOf("10086"));
+        longWebSocketSessionHashMap.remove(userId);
+        log.debug("socket已移除ID"+userId);
     }
 
     /**
@@ -141,7 +145,7 @@ public class SessionManager {
             		if(userMap.containsKey(mdcp.getTargetId())){
             			WebSocketSession session = this.userMap.get(mdcp.getTargetId());
             			try{
-            				session.sendMessage(new TextMessage(JSONObject.toJSONString(mdcp)));
+            				session.sendMessage(new TextMessage(mdcp.getMsgBody()));
             			}catch(IOException e){
             				e.printStackTrace();
             			}
@@ -151,7 +155,7 @@ public class SessionManager {
             		if(userMap.containsKey(mdsp.getTargetId())){
             			WebSocketSession session = this.userMap.get(mdsp.getTargetId());
             			try{
-            				session.sendMessage(new TextMessage(JSONObject.toJSONString(mdsp)));
+            				session.sendMessage(new TextMessage(mdsp.getMsgBody()));
             			}catch(IOException e){
             				e.printStackTrace();
             			}
@@ -166,9 +170,10 @@ public class SessionManager {
                         for (Map.Entry<Long,WebSocketSession>  entry : room.entrySet()){
                             WebSocketSession session = entry.getValue();
                             Long key = entry.getKey();
+                            log.info(key.toString());
                             try {
                             	if(user.getUserId() != key){
-                                  session.sendMessage(new TextMessage(JSONObject.toJSONString(mdcr)));
+                                  session.sendMessage(new TextMessage(mdcr.getMsgBody()));
                             	}
                             } catch (IOException e) {
                                 e.printStackTrace();
@@ -182,7 +187,7 @@ public class SessionManager {
                         for (Map.Entry<Long,WebSocketSession>  entry : room.entrySet()){
                             WebSocketSession session = entry.getValue();
                             try {
-                            	session.sendMessage(new TextMessage(JSONObject.toJSONString(mdsr)));                             
+                            	session.sendMessage(new TextMessage(mdsr.getMsgBody()));                             
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }

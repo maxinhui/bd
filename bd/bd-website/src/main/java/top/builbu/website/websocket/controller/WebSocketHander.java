@@ -48,18 +48,21 @@ public class WebSocketHander implements WebSocketHandler {
 
     @Override
     public void handleTransportError(WebSocketSession webSocketSession, Throwable throwable) throws Exception {
+     
+        //关闭socket时移除map中对象       
+        sessionManager.remove(webSocketSession);  
         if(webSocketSession.isOpen()){
             webSocketSession.close();
         }
-        //关闭socket时移除map中对象       
-//        sessionManager.remove(webSocketSession);        
         log.debug("链接出错，关闭链接......");
     }
 
     @Override
     public void afterConnectionClosed(WebSocketSession webSocketSession, CloseStatus closeStatus) throws Exception {
+    	 
     	//关闭socket时移除map中对象       
-//        sessionManager.remove(webSocketSession);
+        sessionManager.remove(webSocketSession);
+
         log.debug("链接关闭......" + closeStatus.toString());
     }
 
