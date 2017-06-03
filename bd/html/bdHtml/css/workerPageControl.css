@@ -1,0 +1,146 @@
+*{
+	padding:0;
+	margin:0;
+}
+ul li{
+	list-style:none;
+}
+/**/
+.wait{
+	width:200px;
+	padding:20px;
+	font:20px "微软雅黑";
+	text-align:center;
+	border:1px solid #666;
+	margin:0 auto;
+	margin-top:100px;
+}
+.start{
+	display: none;
+}
+.start .step{
+	border:1px solid #666;
+	width:250px;
+	padding:20px;
+	font:20px "微软雅黑";
+	margin:0 auto;
+	margin-top:30px;
+	text-align:center;
+}
+.start .step span{
+	font-size:25px;
+	/*color:red;*/
+}
+.start ul{
+	display:none;
+	margin:40px auto;
+	width:270px;
+}
+.start ul.active{
+	display: block;
+}
+.start ul:after{
+	content:"";
+	display:block;
+	clear:both;
+}
+.start ul li{
+	float:left;
+	width:70px;
+	margin:10px;
+}
+.start ul li button,
+.start .endBtn button{
+	width:100%;
+	height:70px;
+	font:20px "微软雅黑";
+}
+.start .endBtn{
+	width:150px;
+	margin:50px auto;
+}
+/*结束行程界面*/
+.endPage{
+	display:none;
+	margin:10px;
+}
+.endPage:after{
+	content:"";
+	display:block;
+	clear:both;
+}
+.endPage h2{
+	margin-bottom:50px;
+}
+.endPage button{
+	float:left;
+	font: 15px "微软雅黑";
+	padding:10px;
+}
+.endPage button.back{
+	float:right;
+	margin-right:10px;
+}
+/*开始新行程界面*/
+.allEnd{
+	display:none;
+}
+.allEnd button{
+	display:block;
+	margin:50px auto;
+	font: 15px "微软雅黑";
+	padding:20px;
+}
+/*刷新按钮*/
+.refresh{
+    display:block;
+    font: 15px "微软雅黑";
+    padding:10px;
+    margin: 40px;
+}
+/*模态框*/
+.modal-dialog{
+    margin:0 !important;
+}
+@media (min-width: 768px){
+    .modal-dialog{
+        width:100%;
+    }
+}
+.modal-backdrop.in {
+    filter: alpha(opacity=80);
+    opacity: .8;
+}
+.modal-dialog{
+	margin:0 auto;
+	top:50%;
+	margin-top:-40px;
+}
+.modal-dialog .box p{
+	text-align:center;
+	font:20px "微软雅黑";
+	color:white;
+	margin-bottom:20px;
+}
+.modal-dialog .box a{
+	border:2px solid green;
+	font:18px "微软雅黑";
+	color:white;
+	padding:3px 8px;
+	border-radius: 5px;
+	float:left;
+}
+.modal-dialog .box a.back{
+	float:right;
+	color:gray;
+	border-color:gray;
+}
+.modal-dialog .box div{
+	width:200px;
+	margin:0 auto;
+}
+.modal-dialog .box div:after{
+	content:"";
+	display:block;
+	clear:both;
+}

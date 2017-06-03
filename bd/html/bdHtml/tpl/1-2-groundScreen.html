@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>地面屏幕</title>
+   <link rel="stylesheet" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/groundScreen.css">
+</head>
+<body>
+	<!-- 地面默认图片 -->
+	<div class="defaultImg">
+		<img src="../img/groundDefault.gif" alt="">
+	</div>
+	<!-- 开始 接收到任务 -->
+	<div class="content">
+		<!-- 播放视频 等待工作人员停止播放 -->
+<!-- 		<video src="../video/tree.mp4" class="a_vedio"></video>
+		<video src="../video/tree.mp4" class="b_vedio"></video>
+		<video src="../video/tree.mp4" class="c_vedio"></video> -->
+
+		<!-- A山 地图 -->
+		<div class="a">
+         <img src="../img/a100_g.png" alt="" class="a100">
+
+         <img src="../img/a101_g.png" alt="" class="a101">
+         <img src="../img/a102-g-next.png" alt="" class="a102-fir">
+         <img src="../img/a102_g.png" alt="" class="a102">
+         <img src="../img/a103-g-next.png" alt="" class="a103-fir">
+         <img src="../img/a103_g.png" alt="" class="a103">
+         <img src="../img/a104-g-next.png" alt="" class="a104-fir">
+         <img src="../img/a104_g.png" alt="" class="a104">
+         <img src="../img/a105-g-next.png" alt="" class="a105-fir">
+         <img src="../img/a105_g.png" alt="" class="a105">
+         <img src="../img/a106-g-next.png" alt="" class="a106-fir">
+         <img src="../img/a106_g.png" alt="" class="a106">
+         <img src="../img/a107-g-next.png" alt="" class="a107-fir">
+         <img src="../img/a107_g.png" alt="" class="a107">
+         <img src="../img/a108-g-next.png" alt="" class="a108-fir">
+         <img src="../img/a108_g.png" alt="" class="a108">
+         <img src="../img/a109-g-next.png" alt="" class="a109-fir">
+         <img src="../img/a109_g.png" alt="" class="a109">
+		</div>
+		<!-- B山 地图 -->
+		<div class="b">
+         <img src="../img/b100_g.png" alt="" class="b100">
+
+         <img src="../img/b101_g.png" alt="" class="b101">
+         <img src="../img/b102-g-next.png" alt="" class="b102-fir">
+         <img src="../img/b102_g.png" alt="" class="b102">
+         <img src="../img/b103-g-next.png" alt="" class="b103-fir">
+         <img src="../img/b103_g.png" alt="" class="b103">
+         <img src="../img/b104-g-next.png" alt="" class="b104-fir">
+         <img src="../img/b104_g.png" alt="" class="b104">
+         <img src="../img/b105-g-next.png" alt="" class="b105-fir">
+         <img src="../img/b105_g.png" alt="" class="b105">
+         <img src="../img/b106-g-next.png" alt="" class="b106-fir">
+         <img src="../img/b106_g.png" alt="" class="b106">
+         <img src="../img/b107-g-next.png" alt="" class="b107-fir">
+         <img src="../img/b107_g.png" alt="" class="b107">
+         <img src="../img/b108-g-next.png" alt="" class="b108-fir">
+         <img src="../img/b108_g.png" alt="" class="b108">
+         <img src="../img/b109-g-next.png" alt="" class="b109-fir">
+         <img src="../img/b109_g.png" alt="" class="b109">
+		</div>
+		<!-- C山 地图 -->
+		<div class="c">
+		 <img src="../img/c100_g.png" alt="" class="c100">
+
+         <img src="../img/c101_g.png" alt="" class="c101">
+         <img src="../img/c102-g-next.png" alt="" class="c102-fir">
+         <img src="../img/c102_g.png" alt="" class="c102">
+         <img src="../img/c103-g-next.png" alt="" class="c103-fir">
+         <img src="../img/c103_g.png" alt="" class="c103">
+         <img src="../img/c104-g-next.png" alt="" class="c104-fir">
+         <img src="../img/c104_g.png" alt="" class="c104">
+         <img src="../img/c105-g-next.png" alt="" class="c105-fir">
+         <img src="../img/c105_g.png" alt="" class="c105">
+         <img src="../img/c106-g-next.png" alt="" class="c106-fir">
+         <img src="../img/c106_g.png" alt="" class="c106">
+         <img src="../img/c107-g-next.png" alt="" class="c107-fir">
+         <img src="../img/c107_g.png" alt="" class="c107">
+         <img src="../img/c108-g-next.png" alt="" class="c108-fir">
+         <img src="../img/c108_g.png" alt="" class="c108">
+         <img src="../img/c109-g-next.png" alt="" class="c109-fir">
+         <img src="../img/c109_g.png" alt="" class="c109">
+		</div>
+	</div>
+   <!-- 小点闪烁 -->
+	<div class="point"></div>
+   <!-- 乱入小点 -->
+   <div class="othPoint"></div>
+   <!-- error page 方向错误提示 模态框 -->
+      <!-- 模态框 -->
+   <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+     <div class="modal-dialog modal-lg" role="document">
+         <p>您已偏离路线，正在为您重新规划路线</p>
+     </div>
+   </div>
+	<script src="../js/jquery-3.2.0.min.js"></script>
+   <script src="../js/bootstrap.min.js"></script>  
+	<script src="../js/groundScreen.js"></script>
+</body>
+</html>

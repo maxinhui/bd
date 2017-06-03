@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title>工作人员 控制页面</title>
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/workerPageControl.css">
+</head>
+<body>
+	<!-- 默认界面 -->
+	<!-- 等待任务界面 默认 -->
+	<div class="wait">
+		景色控制页面<br>
+		请等待任务...
+	</div>
+	<!-- 玩家开始游戏 任务开始 -->
+	<div class="start">
+		<!-- 提示当前的路线 -->
+		<div class="step">
+			当前为&nbsp;<span>0</span>&nbsp;路线
+		</div>
+		<!-- 选择 内容 -->
+		<!-- A山 -->
+		<ul class="a">
+			<li>
+				<button onclick="send(2,'a101')">天龙桥</button>
+			</li>
+			<li>
+				<button onclick="send(2,'a102')">天福官驿</button>
+			</li>
+			<li>
+				<button onclick="send(2,'a103')">天龙天坑</button>
+			</li>
+			<li>
+				<button onclick="send(2,'a104')">青龙桥</button>
+			</li>
+			<li>
+				<button onclick="send(2,'a105')">黑龙桥</button>
+			</li>
+			<li>
+				<button onclick="send(2,'a106')">地缝入口</button>
+			</li>
+			<li>
+				<button onclick="send(2,'a107')">蛟龙寒窟</button>
+			</li>
+			<li>
+				<button onclick="send(2,'a108')">银河飞瀑</button>
+			</li>
+			<li>
+				<button onclick="send(2,'a109')">龙潭映月</button>
+			</li>
+		</ul>
+		<!-- B山 -->
+		<ul class="b">
+			<li>
+				<button onclick="send(2,'b101')">石板热</button>
+			</li>
+			<li>
+				<button onclick="send(2,'b102')">斋戒坪</button>
+			</li>
+			<li>
+				<button onclick="send(2,'b103')">锅庄坪</button>
+			</li>
+			<li>
+				<button onclick="send(2,'b104')">海子沟</button>
+			</li>
+			<li>
+				<button onclick="send(2,'b105')">喇嘛寺</button>
+			</li>
+			<li>
+				<button onclick="send(2,'b106')">观光车</button>
+			</li>
+			<li>
+				<button onclick="send(2,'b107')">枯树滩</button>
+			</li>
+			<li>
+				<button onclick="send(2,'b108')">上干海子</button>
+			</li>
+			<li>
+				<button onclick="send(2,'b109')">幺妹峰</button>
+			</li>
+		</ul>
+		<!-- C山 -->
+		<ul class="c">
+			<li>
+				<button onclick="send(2,'c101')">子梅垭口</button>
+			</li>
+			<li>
+				<button onclick="send(2,'c102')">泉华滩</button>
+			</li>
+			<li>
+				<button onclick="send(2,'c103')">沙德乡</button>
+			</li>
+			<li>
+				<button onclick="send(2,'c104')">朋布西乡</button>
+			</li>
+			<li>
+				<button onclick="send(2,'c105')">雅哈景区</button>
+			</li>
+			<li>
+				<button onclick="send(2,'c106')">新都桥</button>
+			</li>
+			<li>
+				<button onclick="send(2,'c107')">石泾河</button>
+			</li>
+			<li>
+				<button onclick="send(2,'c108')">塔公寺</button>
+			</li>
+			<li>
+				<button onclick="send(2,'c109')">雅拉雪山</button>
+			</li>
+		</ul>
+		<!-- 结束行程 -->
+		<div class="endBtn">
+			<button>结束所有行程</button>
+		</div>
+	</div>
+	<!-- 结束行程界面 -->
+	<div class="endPage">
+		<h2>确认结束所有行程，开始结束语？</h2>
+		<button class="sure" onclick="send(2,'end')">确认</button>
+		<button class="back">返回</button>
+	</div>
+	<!-- 确认结束行程界面 开始新的行程 -->
+	<div class="allEnd">
+		<button onclick="send(2,'allEnd')">开始新行程</button>
+	</div>
+	<!-- 刷新按钮 -->
+	<button class="refresh" disabled="" >刷新</button>
+	<!-- 是否结束该景点 --><!-- 模态框 -->
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+            <!-- 玩家选择 弹窗提示 -->
+            <div class="box">
+                <p>是否结束该景点？</p>
+                <div>
+                    <a href="javascript:;" class="true">确认</a>
+                    <a href="javascript:;" class="back">返回</a>
+                </div>
+            </div>
+            
+      </div>
+    </div>
+	
+	<script src="../js/jquery-3.2.0.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>  
+	<script src="../js/workerPageControl.js"></script>
+</body>
+</html>

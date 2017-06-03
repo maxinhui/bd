@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title>工作人员 纠错</title>
+	<link rel="stylesheet" href="../css/workerWrong.css">
+</head>
+<body>
+	<!-- 等待任务界面 默认 -->
+	<div class="wait">
+		纠错页面<br>
+		请等待任务...
+	</div>
+	<!-- 纠错的选项 默认隐藏 -->
+	<div class="errorContent">
+		<!-- 开始纠错 -->
+		<div class="startError">
+			<button onclick="send(2,'wrong')">提示错误</button>  <!--主页弹框 您已偏离导航-->
+		</div>
+		<!-- 九宫格 方向 -->
+		<ul>
+			<li>
+				<button onclick="send(2,'左上')">左上</button>
+			</li>
+			<li>
+				<button onclick="send(2,'上')">上</button>
+			</li>
+			<li>
+				<button onclick="send(2,'右上')">右上</button>
+			</li>
+			<li>
+				<button onclick="send(2,'左')">左</button>
+			</li>
+			<li style="visibility: hidden;">
+				<button>中间</button>
+			</li>
+			<li>
+				<button onclick="send(2,'右')">右</button>
+			</li>
+			<li>
+				<button onclick="send(2,'左下')">左下</button>
+			</li>
+			<li>
+				<button onclick="send(2,'下')">下</button>
+			</li>
+			<li>
+				<button onclick="send(2,'右下')">右下</button>
+			</li>
+		</ul>
+		<!-- 结束纠错 -->
+		<div class="endError">
+			<button onclick="send(2,'wrongEnd')">错误已纠正</button>  <!--主页弹框 您已返回正确的路线-->
+		</div>
+	</div>
+	<!-- 刷新按钮 -->
+	<button class="refresh" disabled="">刷新</button>
+
+	
+	<script src="../js/jquery-3.2.0.min.js"></script>
+	<script src="../js/workerWrong.js"></script>
+</body>
+</html>

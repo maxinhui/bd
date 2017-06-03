@@ -1,0 +1,177 @@
+*{
+	padding:0;
+	margin:0;
+}
+ul li{
+	list-style:none;
+}
+img{
+    width:100%;
+}
+/**/
+.default{
+    /*display:none;*/
+    overflow:hidden;
+    position:relative;
+}
+.default img{
+    display:block;
+}
+.default p{
+    width:100%;
+    color:#3DAF2C;
+    text-align:center;
+    font:15px "微软雅黑";
+    position:absolute;
+    bottom:11%;
+}
+.choose h2{
+    font:25px "微软雅黑";
+    text-align:center;
+    color:red;
+    margin-top:30px;
+}
+.default button{
+    display:block;
+    margin:0 auto;
+	margin-top:100px;
+	padding:20px;
+	font:20px "微软雅黑";
+}
+.choose{
+    display:none;
+    overflow:hidden;
+    width:100%;
+    background:url("../img/choose-p.png") no-repeat;
+    background-size:100%;
+}
+/*.choose h2{
+    margin-bottom:50px;
+}*/
+.choose button{
+    display:block;
+    width:100%;
+    height:21%;
+    border:none;
+    outline: none;
+    background:transparent;
+    color:transparent;
+    /*font:bold 15px "微软雅黑";*/
+    /*margin:40px auto;*/
+    /*width:150px;*/
+}
+/*.choose button:first-of-type{
+    margin-top:25%;
+}*/
+.choose button:nth-of-type(2){
+    height:25%;
+}
+.content{
+    display:none;
+}
+.content > div{
+    display:none;
+}
+.content img{
+    width:100%;
+    display:none;
+}
+.content img.active{
+    display:block;
+}
+.abcImg{
+    display:none;
+}
+.abcImg img{
+    display:none;
+}
+.abcImg img.active{
+    display:block;
+}
+/*闪烁的小点*/
+.point,
+.othPoint{
+    display:none;
+    width:10px;
+    height:10px;
+    border-radius: 50%;
+    background:purple;
+    position:absolute;
+    z-index: 100001;
+    box-shadow: 0 0 2px 2px purple;
+    /*test*/
+    /*left:55%;
+    bottom:10%;*/
+}
+/*乱入的闪烁小点*/
+.othPoint{
+    /*display:block;*/
+    background:blue;
+    box-shadow: 0 0 2px 2px blue;
+/*
+    left:35%;
+    top:20%;*/
+}
+/*结束界面*/
+.end{
+    display:none;
+}
+.end img{
+    display: block;
+}
+/*纠错*/
+.modal-dialog{
+    margin:0 !important;
+}
+@media (min-width: 768px){
+    .modal-dialog{
+        width:100%;
+    }
+}
+.modal-backdrop.in {
+    filter: alpha(opacity=80);
+    opacity: .8;
+}
+.modal-dialog p{
+    color:white;
+    padding:0 15px;
+    font:16px "微软雅黑";
+    text-align:center;
+    position: relative;
+    margin:0 auto;
+    top:45%;
+}
+.modal-dialog .box{
+    display:none;
+    font:14px "微软雅黑";
+    text-align:center;
+    position: absolute;
+    bottom:45%;
+    width:100%;
+}
+.modal-dialog .box a{
+    text-decoration: none;
+    color:green;
+    padding:6px 10px;
+    border-radius: 5px;
+    border:2px solid green;
+}
+.modal-dialog .box a.back{
+    color:gray;
+    border:2px solid red;
+    margin-left:20px;
+}
+.modal-dialog .over{
+    display:none;
+    font:16px "微软雅黑";
+    text-align: center;
+    color:black;
+    width:50%;
+    padding:20px 0;
+    margin:0 auto;
+    background:white;
+    position: relative;
+    border-radius:10px;
+    top:50%;
+    margin-top:-30px;
+}
