@@ -947,3 +947,136 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY org.eclipse.ui 4 4 2017-05-12 09:50:50.303
 !MESSAGE Plugin de.jayefem.log4e, extension org.eclipse.ui.exportWizards, id de.jayefem.log4e.propertypages.rootPropertyPage: Unknown extension tag found: page
+!SESSION 2017-06-12 11:45:43.765 -----------------------------------------------
+eclipse.buildId=4.4.2.M20150204-1700
+java.version=1.8.0_11
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=zh_CN
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product -data F:\probject\bd
+
+!ENTRY org.eclipse.core.resources 2 10035 2017-06-12 11:45:45.263
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.egit.ui 2 0 2017-06-12 11:45:55.372
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Administrator'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY jp.gr.java_conf.ussiy.app.propedit 1 0 2017-06-12 11:45:56.031
+!MESSAGE properties loading 'RemoteSystemsTempFiles'
+
+!ENTRY jp.gr.java_conf.ussiy.app.propedit 1 0 2017-06-12 11:45:56.034
+!MESSAGE properties loading 'Servers'
+
+!ENTRY jp.gr.java_conf.ussiy.app.propedit 1 0 2017-06-12 11:45:56.036
+!MESSAGE properties loading 'bd'
+
+!ENTRY jp.gr.java_conf.ussiy.app.propedit 1 0 2017-06-12 11:45:56.039
+!MESSAGE properties loading 'bd-business'
+
+!ENTRY jp.gr.java_conf.ussiy.app.propedit 1 0 2017-06-12 11:45:56.040
+!MESSAGE properties loading 'bd-common'
+
+!ENTRY jp.gr.java_conf.ussiy.app.propedit 1 0 2017-06-12 11:45:56.041
+!MESSAGE properties loading 'bd-core'
+
+!ENTRY jp.gr.java_conf.ussiy.app.propedit 1 0 2017-06-12 11:45:56.042
+!MESSAGE properties loading 'bd-website'
+
+!ENTRY jp.gr.java_conf.ussiy.app.propedit 1 0 2017-06-12 11:46:02.196
+!MESSAGE properties loading 'bd'
+
+!ENTRY jp.gr.java_conf.ussiy.app.propedit 1 0 2017-06-12 11:46:03.745
+!MESSAGE properties loading 'bd'
+
+!ENTRY jp.gr.java_conf.ussiy.app.propedit 1 0 2017-06-12 11:46:03.746
+!MESSAGE properties loading 'bd-website'
+
+!ENTRY jp.gr.java_conf.ussiy.app.propedit 1 0 2017-06-12 12:02:47.827
+!MESSAGE properties loading 'bd'
+
+!ENTRY jp.gr.java_conf.ussiy.app.propedit 1 0 2017-06-12 12:02:47.828
+!MESSAGE properties loading 'bd-website'
+
+!ENTRY jp.gr.java_conf.ussiy.app.propedit 1 0 2017-06-12 12:02:48.802
+!MESSAGE properties loading 'bd'
+
+!ENTRY jp.gr.java_conf.ussiy.app.propedit 1 0 2017-06-12 12:02:48.803
+!MESSAGE properties loading 'bd-website'
+
+!ENTRY org.eclipse.ui 4 4 2017-06-12 12:02:51.025
+!MESSAGE Plugin de.jayefem.log4e, extension org.eclipse.ui.exportWizards, id de.jayefem.log4e.propertypages.rootPropertyPage: Unknown extension tag found: page
+
+!ENTRY jp.gr.java_conf.ussiy.app.propedit 1 0 2017-06-12 12:02:59.729
+!MESSAGE properties loading 'bd-website'
+
+!ENTRY jp.gr.java_conf.ussiy.app.propedit 1 0 2017-06-12 12:03:00.551
+!MESSAGE properties loading 'bd'
+
+!ENTRY jp.gr.java_conf.ussiy.app.propedit 1 0 2017-06-12 12:03:01.204
+!MESSAGE properties loading 'bd'
+
+!ENTRY jp.gr.java_conf.ussiy.app.propedit 1 0 2017-06-12 12:03:01.206
+!MESSAGE properties loading 'bd-website'
+!SESSION 2017-06-13 09:16:35.686 -----------------------------------------------
+eclipse.buildId=4.4.2.M20150204-1700
+java.version=1.8.0_11
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=zh_CN
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product -data F:\probject\bd
+
+!ENTRY org.eclipse.core.resources 2 10035 2017-06-13 09:16:37.296
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.egit.ui 2 0 2017-06-13 09:18:01.569
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Administrator'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY jp.gr.java_conf.ussiy.app.propedit 1 0 2017-06-13 09:18:02.569
+!MESSAGE properties loading 'RemoteSystemsTempFiles'
+
+!ENTRY jp.gr.java_conf.ussiy.app.propedit 1 0 2017-06-13 09:18:02.569
+!MESSAGE properties loading 'Servers'
+
+!ENTRY jp.gr.java_conf.ussiy.app.propedit 1 0 2017-06-13 09:18:02.569
+!MESSAGE properties loading 'bd'
+
+!ENTRY jp.gr.java_conf.ussiy.app.propedit 1 0 2017-06-13 09:18:02.569
+!MESSAGE properties loading 'bd-business'
+
+!ENTRY jp.gr.java_conf.ussiy.app.propedit 1 0 2017-06-13 09:18:02.569
+!MESSAGE properties loading 'bd-common'
+
+!ENTRY jp.gr.java_conf.ussiy.app.propedit 1 0 2017-06-13 09:18:02.569
+!MESSAGE properties loading 'bd-core'
+
+!ENTRY jp.gr.java_conf.ussiy.app.propedit 1 0 2017-06-13 09:18:02.569
+!MESSAGE properties loading 'bd-website'
+
+!ENTRY jp.gr.java_conf.ussiy.app.propedit 1 0 2017-06-13 09:18:07.663
+!MESSAGE properties loading 'bd'
+
+!ENTRY jp.gr.java_conf.ussiy.app.propedit 1 0 2017-06-13 09:18:10.757
+!MESSAGE properties loading 'bd'
+
+!ENTRY jp.gr.java_conf.ussiy.app.propedit 1 0 2017-06-13 09:18:10.772
+!MESSAGE properties loading 'bd-website'
+
+!ENTRY jp.gr.java_conf.ussiy.app.propedit 1 0 2017-06-13 09:56:22.768
+!MESSAGE properties loading 'bd'
+
+!ENTRY jp.gr.java_conf.ussiy.app.propedit 1 0 2017-06-13 09:56:22.769
+!MESSAGE properties loading 'bd-website'
+
+!ENTRY jp.gr.java_conf.ussiy.app.propedit 1 0 2017-06-13 09:56:23.487
+!MESSAGE properties loading 'bd'
+
+!ENTRY jp.gr.java_conf.ussiy.app.propedit 1 0 2017-06-13 09:56:23.488
+!MESSAGE properties loading 'bd-website'

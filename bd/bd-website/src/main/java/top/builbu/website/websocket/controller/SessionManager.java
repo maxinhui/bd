@@ -14,6 +14,8 @@ import com.alibaba.fastjson.JSONObject;
 
 
 
+
+
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 
@@ -66,9 +68,16 @@ public class SessionManager {
      * @param webSocketSession
      * @param userType 用户类型
      */
-    public void put(Long userId, WebSocketSession webSocketSession) {   	      
+    public void put(Long userId, WebSocketSession webSocketSession) {
+    	@SuppressWarnings("unchecked")
+		HashMap<Long,WebSocketSession> map = (HashMap<Long, WebSocketSession>) userMap.get(userId);
+    	if(null == map){
                 userMap.put(userId, webSocketSession);
                 log.debug("增加用户："+userId);
+    	}else{
+    		log.debug("用户已存在");
+    		remove(webSocketSession);
+    	}
     }
 
     /**
@@ -78,23 +87,17 @@ public class SessionManager {
     public void remove(WebSocketSession webSocketSession){
         Map<String, Object> attributes = webSocketSession.getAttributes();
         SessionUser user = (SessionUser) attributes.get(SessionManager.USER_SESSION);
-        Long userId = user.getUserId();    
-        //判断是否加入了对应的聊天室
-//        ArrayList<Long> chatroomIds = user.getChatroomIds();
-//
-//        Iterator<Long> iterator = chatroomIds.iterator();
-//        while (iterator.hasNext()){
-//            Long id = iterator.next();
-//            log.info("rId"+id);
-//            if(chatroomMap.containsKey(id)){
-//                chatroomMap.get(id).remove(userId);
-//                iterator.remove();
-//            }
-//        }
-        HashMap<Long, WebSocketSession> longWebSocketSessionHashMap = chatroomMap.get(Long.valueOf("10086"));
-        longWebSocketSessionHashMap.remove(userId);
-        log.debug("socket已移除ID"+userId);
+        if(null != user){
+	        Long userId = user.getUserId();    
+	        HashMap<Long, WebSocketSession> longWebSocketSessionHashMap = chatroomMap.get(Long.valueOf("10086"));
+	        longWebSocketSessionHashMap.remove(userId);
+	        userMap.remove(userId);
+	        log.debug("USER已移除ID"+userId);
+        }else{
+        	log.debug("移除对象为空");
+        }
     }
+ 
 
     /**
      * 往对应的聊天室增加一个人
@@ -109,6 +112,7 @@ public class SessionManager {
         }
         longWebSocketSessionHashMap.put(userId,webSocketSession);
         chatroomMap.put(chatroomId,longWebSocketSessionHashMap);
+    
     }
 
     /**
@@ -170,9 +174,10 @@ public class SessionManager {
                         for (Map.Entry<Long,WebSocketSession>  entry : room.entrySet()){
                             WebSocketSession session = entry.getValue();
                             Long key = entry.getKey();
-                            log.info(key.toString());
+                           
                             try {
                             	if(user.getUserId() != key){
+                            	  log.info(key.toString());
                                   session.sendMessage(new TextMessage(mdcr.getMsgBody()));
                             	}
                             } catch (IOException e) {

@@ -1,5 +1,6 @@
 #Tomcat publish data
-#Mon Apr 17 12:34:16 CST 2017
+#Tue Jun 13 10:06:48 CST 2017
 org.eclipse.jst.j2ee.server\:bd-business=WEB-INF/lib/bd-business-1.0.jar
 org.eclipse.jst.j2ee.server\:bd-core=WEB-INF/lib/bd-core-1.0.jar
+org.eclipse.jst.j2ee.server\:bd-common=WEB-INF/lib/bd-common-1.0.jar
 org.eclipse.jst.jee.server\:/binary\:F\:\\maven\\Local_Repository\\repository\\org\\springframework\\spring-web\\4.2.5.RELEASE\\spring-web-4.2.5.RELEASE.jar=WEB-INF/lib/spring-web-4.2.5.RELEASE.jar

@@ -19,7 +19,7 @@ public class WebSocketHander implements WebSocketHandler {
     //初次链接成功执行
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-        
+    	 
         Object temp = session.getAttributes().get(SessionManager.USER_SESSION);
         if(temp!= null){
             SessionUser user = (SessionUser)temp; //用户信息
@@ -27,11 +27,11 @@ public class WebSocketHander implements WebSocketHandler {
                      sessionManager.put(user.getUserId(), session);
                      sessionManager.chatroomMapPut(Long.valueOf("10086"), user.getUserId(), session);
                     log.info("链接成功......用户Id"+user.getUserId());
-                   
+                 
 
         }
     }
-
+  
     //接受消息处理消息
     @Override
     public void handleMessage(WebSocketSession webSocketSession, WebSocketMessage<?> webSocketMessage) throws Exception {
@@ -48,11 +48,12 @@ public class WebSocketHander implements WebSocketHandler {
 
     @Override
     public void handleTransportError(WebSocketSession webSocketSession, Throwable throwable) throws Exception {
-     
-        //关闭socket时移除map中对象       
-        sessionManager.remove(webSocketSession);  
-        if(webSocketSession.isOpen()){
+       log.debug("非正常关闭");
+       if(webSocketSession.isOpen()){
             webSocketSession.close();
+        }else{
+        	 sessionManager.remove(webSocketSession);
+        	
         }
         log.debug("链接出错，关闭链接......");
     }
@@ -62,7 +63,7 @@ public class WebSocketHander implements WebSocketHandler {
     	 
     	//关闭socket时移除map中对象       
         sessionManager.remove(webSocketSession);
-
+   	   
         log.debug("链接关闭......" + closeStatus.toString());
     }
 
